@@ -1,0 +1,142 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko"> <!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>Korean | Vocabulary</title>
+		<meta name="description" content="Flash cards to practice my Korean vocabulary.">
+		<meta name="author" content="Curtis Blackwell&hellip; sorta.">
+
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<script src="js/libs/modernizr-2.0.6.min.js"></script>
+		<style>
+			body {
+				background: #222;
+				color: #ccc;
+				font: 30px sans-serif;
+				margin: 0 auto;
+				text-align: center;
+				width: 500px;
+			}
+
+			h1 { color: #fff; }
+
+			#card_deck {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+			.card {
+				color: #333;
+				height: 300px;
+				position: absolute;
+				width: 420px;
+			}
+			.side_one, .side_two {
+				background: #fff;
+				   -moz-box-shadow: 0px 3px 5px #000;
+				-webkit-box-shadow: 0px 3px 5px #000;
+						box-shadow: 0px 3px 5px #000;
+				display: table-cell;
+				height: 300px;
+				padding: 0 40px;
+				vertical-align: middle;
+				width: 420px;
+			}
+			.side_one { font-family: serif; }
+			.side_two { display: none; }
+			.card p {
+				margin: 0;
+				padding: 0;
+			}
+			.flipper {
+				color: #fff;
+				padding: 5px;
+				width: 500px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Flash Cards</h1>
+
+		<ul id="card_deck">
+			<li class="card">
+				<div class="side_one">
+					<p>안녕하세요</p>
+				</div>
+				<div class="side_two">
+					<p>Hello</p>
+				</div>
+				<a href="#" class="flipper">Flip</a>
+			</li>
+			<li class="card">
+				<div class="side_one">
+					<p>h</p>
+				</div>
+				<div class="side_two">
+					<p>hisadfsdf</p>
+				</div>
+				<a href="#" class="flipper">Flip</a>
+			</li>
+		</ul>
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+		<script src="js/libs/bigtext.js"></script>
+		<script src="js/libs/jquery.flip.min.js"></script>
+		<script src="js/libs/jquery-ui-1.8.16.custom.min.js"></script>
+
+		<script>
+			$(document).ready(function(){
+				// BIGTEXT
+				$('.card').bigtext({
+					childSelector:	'.side_one p',
+					maxfontsize:	261
+				});
+
+				// FLIP
+				$('.flipper').bind("click",function(){
+
+					// $(this) point to the clicked .side_one element (caching it in elem for speed)
+					var elem = $(this).siblings('.side_one');
+
+					// data('flipped') is a flag we set when we flip the element:
+					if(elem.data('flipped'))
+					{
+						// If the element has already been flipped, use the revertFlip method
+						// defined by the plug-in to revert to the default state automatically:
+						elem.revertFlip();
+
+						// Unsetting the flag:
+						elem.data('flipped',false)
+					}
+					else
+					{
+						// Using the flip method defined by the plugin:
+						elem.flip({
+							color:		'#fff',
+							direction:	'bt',
+							onBefore:	function(){
+											elem.html(elem.siblings('.side_two').html());
+										},
+							onEnd:		function(){
+											$('.card').bigtext({
+												childSelector:	'.side_one p',
+												maxfontsize:	261
+											});
+										},
+							speed:		150
+						});
+
+						// Setting the flag:
+						elem.data('flipped',true);
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
