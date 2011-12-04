@@ -12,18 +12,11 @@
 		<meta name="author" content="Curtis Blackwell&hellip; sorta.">
 
 		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="stylesheet" href="style.css">
+		<link href="http://fonts.googleapis.com/css?family=Schoolbell" rel="stylesheet" type="text/css">
 		<script src="js/libs/modernizr-2.0.6.min.js"></script>
 		<style>
-			body {
-				background: #222;
-				color: #ccc;
-				font: 30px sans-serif;
-				margin: 0 auto;
-				text-align: center;
-				width: 500px;
-			}
-
-			h1 { color: #fff; }
+			body { text-align: center; }
 
 			#card_deck {
 				list-style: none;
@@ -32,12 +25,16 @@
 			}
 			.card {
 				color: #333;
+				font-size: 30px;
 				height: 300px;
+				left: 50%;
+				line-height: 30px;
+				margin-left: -250px;
 				position: absolute;
-				width: 420px;
+				width: 500px;
 			}
 			.side_one, .side_two {
-				background: #fff;
+				background:  url('img/bg-notecard.gif') left top repeat-x;
 				   -moz-box-shadow: 0px 3px 5px #000;
 				-webkit-box-shadow: 0px 3px 5px #000;
 						box-shadow: 0px 3px 5px #000;
@@ -54,9 +51,12 @@
 				padding: 0;
 			}
 			.flipper {
+				bottom: -45px;
 				color: #fff;
+				left: 50%;
+				margin: 0 auto 0 -30px;;
 				padding: 5px;
-				width: 500px;
+				position: absolute;
 			}
 		</style>
 	</head>
@@ -73,31 +73,16 @@
 				</div>
 				<a href="#" class="flipper">Flip</a>
 			</li>
-			<li class="card">
-				<div class="side_one">
-					<p>h</p>
-				</div>
-				<div class="side_two">
-					<p>hisadfsdf</p>
-				</div>
-				<a href="#" class="flipper">Flip</a>
-			</li>
+
 		</ul>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
-		<script src="js/libs/bigtext.js"></script>
 		<script src="js/libs/jquery.flip.min.js"></script>
 		<script src="js/libs/jquery-ui-1.8.16.custom.min.js"></script>
 
 		<script>
 			$(document).ready(function(){
-				// BIGTEXT
-				$('.card').bigtext({
-					childSelector:	'.side_one p',
-					maxfontsize:	261
-				});
-
 				// FLIP
 				$('.flipper').bind("click",function(){
 
@@ -112,7 +97,8 @@
 						elem.revertFlip();
 
 						// Unsetting the flag:
-						elem.data('flipped',false)
+						elem.data('flipped',false);
+						elem.css('fontFamily', 'serif');
 					}
 					else
 					{
@@ -122,12 +108,7 @@
 							direction:	'bt',
 							onBefore:	function(){
 											elem.html(elem.siblings('.side_two').html());
-										},
-							onEnd:		function(){
-											$('.card').bigtext({
-												childSelector:	'.side_one p',
-												maxfontsize:	261
-											});
+											elem.css('fontFamily', 'Schoolbell');
 										},
 							speed:		150
 						});
