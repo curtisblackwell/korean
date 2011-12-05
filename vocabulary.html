@@ -20,67 +20,58 @@
 
 			#deck {
 				height: 300px;
-				left: 50%;
 				list-style: none;
-				margin: 0;
+				margin: 0 auto;
 				padding: 0;
 				position: relative;
 				width: 500px;
 			}
 			.card {
 				color: #333;
+				display: none;
 				font-size: 30px;
-				height: 300px;
-				left: 50%;
 				line-height: 30px;
-				margin-left: -250px;
-				position: absolute;
-				width: 500px;
 			}
-			.side_one, .side_two {
+			.card:first-child { display: block; }
+			.side_one {
 				background:  url('img/bg-notecard.gif') left top repeat-x;
 				   -moz-box-shadow: 0px 3px 5px #000;
 				-webkit-box-shadow: 0px 3px 5px #000;
 						box-shadow: 0px 3px 5px #000;
 				display: table-cell;
+				font-family: serif;
 				height: 300px;
 				padding: 0 40px;
 				vertical-align: middle;
 				width: 420px;
 			}
-			.side_one { font-family: serif; }
 			.side_two { display: none; }
 			.card p {
 				margin: 0;
 				padding: 0;
-			}
-			.flipper {
-				bottom: -45px;
-				color: #fff;
-				cursor: pointer;
-				padding: 5px;
-				position: absolute;
 			}
 
 			#nav_deck {
 				color: #fff;
 				cursor: pointer;
 				font-size: 30px;
-				margin: 0 auto;
+				margin: 5px auto;
 				position: relative;
 				width: 500px;
 			}
-			#prev, #next {
+			.flipper { /* needs to be a class so that the up and down arrows are on top of each other with position: absolute; */
+				color: #fff;
+				cursor: pointer;
 				position: absolute;
-				top: 4px;
 			}
+			#prev, #next { position: absolute; }
 			#prev { left: 15px; }
 			#next { right: 15px; }
 		</style>
 	</head>
 	<body>
 		<h1><a href="https://github.com/curtisblackwell/korean">Korean</a> <span class="small">by <a href="https://github.com/curtisblackwell">curtisblackwell</a></span></h1>
-		<h2>Flash Cards</h2>
+		<h2>Vocabulary Flash Cards</h2>
 
 		<ul id="deck">
 			<li class="card">

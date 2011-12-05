@@ -14,8 +14,7 @@
   Components:	Modernizr
   				jQuery
 
-  Software:		BigText			(https://github.com/zachleat/BigText)
-  				Flip			(http://lab.smashup.it/flip)
+  Software:		Flip			(http://lab.smashup.it/flip)
   				jQuery Cycle	(http://jquery.malsup.com/cycle)
   
 
