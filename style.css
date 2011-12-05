@@ -219,11 +219,11 @@ body {
 	width: 960px;
 }
 
-h1 {
+h1 { font-size: 30px; }
+h2 {
 	color: #fff;
 	font-size: 60px;
 }
-
 
 
 
