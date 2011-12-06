@@ -42,9 +42,6 @@
 
 			.side_one, .side_two {
 				background: #fff url('img/bg-notecard.gif');
-				   -moz-box-shadow: 0px 3px 5px #000;
-				-webkit-box-shadow: 0px 3px 5px #000;
-						box-shadow: 0px 3px 5px #000;
 				height: inherit;
 				position: absolute;
 				   -moz-transition: all .4s ease-in-out;
@@ -53,6 +50,12 @@
 				-webkit-transition: all .4s ease-in-out;
 						transition: all .4s ease-in-out;
 				width: inherit;
+			}
+			
+			.current .side_one, .current .side_two {
+				   -moz-box-shadow: 0px 3px 5px #000;
+				-webkit-box-shadow: 0px 3px 5px #000;
+						box-shadow: 0px 3px 5px #000;
 			}
 
 			.side_one {
@@ -88,8 +91,12 @@
 				z-index: 1000;
 			}
 			.card p {
+				display: table-cell;
+				height: inherit;
 				margin: 0;
 				padding: 0;
+				vertical-align: middle;
+				width: inherit;
 			}
 
 			#nav_deck {
@@ -103,6 +110,7 @@
 			.flipper { /* needs to be a class so that the up and down arrows are on top of each other with position: absolute; */
 				color: #fff;
 				cursor: pointer;
+				left: 48%;
 				position: absolute;
 			}
 			#prev, #next { position: absolute; }
@@ -145,43 +153,7 @@
 		<script src="js/libs/jquery-ui-1.8.16.custom.min.js"></script>
 
 		<script>
-			$(document).ready(function(){
-/*				// FLIP
-				$('.flipper').bind("click",function(){
-
-					// $(this) point to the clicked .side_one element (caching it in elem for speed)
-					var elem = $('.card.current').children('.side_one');
-
-					// data('flipped') is a flag we set when we flip the element:
-					if(elem.data('flipped'))
-					{
-						// If the element has already been flipped, use the revertFlip method
-						// defined by the plug-in to revert to the default state automatically:
-						elem.revertFlip();
-
-						// Unsetting the flag:
-						elem.data('flipped',false);
-						elem.css('fontFamily', 'serif');
-					}
-					else
-					{
-						// Using the flip method defined by the plugin:
-						elem.flip({
-							color:		'#fff',
-							direction:	'bt',
-							onBefore:	function(){
-											elem.html(elem.siblings('.side_two').html());
-											elem.css('fontFamily', 'Schoolbell');
-										},
-							speed:		150
-						});
-
-						// Setting the flag:
-						elem.data('flipped',true);
-					}
-				});
-*/
-				
+			$(document).ready(function(){				
 				// FLIP
 				$('.flipper').bind('click', function(){
 					$('.card.current').toggleClass('flip');
