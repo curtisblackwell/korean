@@ -26,26 +26,67 @@
 				position: relative;
 				width: 500px;
 			}
+
 			.card {
 				color: #333;
 				display: none;
 				font-size: 30px;
+				height: 300px;
 				line-height: 30px;
+				   -moz-perspective: 800;
+				-webkit-perspective: 800;
+				position: relative;
+				width: 500px;
 			}
 			.card:first-child { display: block; }
-			.side_one {
-				background:  url('img/bg-notecard.gif') left top repeat-x;
+
+			.side_one, .side_two {
+				background: #fff url('img/bg-notecard.gif');
 				   -moz-box-shadow: 0px 3px 5px #000;
 				-webkit-box-shadow: 0px 3px 5px #000;
 						box-shadow: 0px 3px 5px #000;
-				display: table-cell;
-				font-family: serif;
-				height: 300px;
-				padding: 0 40px;
-				vertical-align: middle;
-				width: 420px;
+				height: inherit;
+				position: absolute;
+				   -moz-transition: all .4s ease-in-out;
+					-ms-transition: all .4s ease-in-out;
+					 -o-transition: all .4s ease-in-out;
+				-webkit-transition: all .4s ease-in-out;
+						transition: all .4s ease-in-out;
+				width: inherit;
 			}
-			.side_two { display: none; }
+
+			.side_one {
+				   -moz-backface-visibility: hidden;
+				-webkit-backface-visibility: hidden;
+				font-family: serif;
+				   -moz-transform: rotateX(0deg);
+				-webkit-transform: rotateX(0deg);
+				   -moz-transform-style: preserve-3d;
+				-webkit-transform-style: preserve-3d;
+				z-index: 900;
+			}
+
+			.flip .side_one {
+				   -moz-transform: rotateX(180deg);
+				-webkit-transform: rotateX(180deg);
+			}
+			
+			.side_two {
+				   -moz-backface-visibility: hidden;
+				-webkit-backface-visibility: hidden;
+				font-family: "Schoolbell";
+				   -moz-transform: rotateX(-180deg);
+				-webkit-transform: rotateX(-180deg);
+				   -moz-transform-style: preserve-3d;
+				-webkit-transform-style: preserve-3d;
+				z-index: 800;
+			}
+			
+			.card.flip .side_two {
+				   -moz-transform: rotateX(0deg);
+				-webkit-transform: rotateX(0deg);
+				z-index: 1000;
+			}
 			.card p {
 				margin: 0;
 				padding: 0;
@@ -105,7 +146,7 @@
 
 		<script>
 			$(document).ready(function(){
-				// FLIP
+/*				// FLIP
 				$('.flipper').bind("click",function(){
 
 					// $(this) point to the clicked .side_one element (caching it in elem for speed)
@@ -139,7 +180,13 @@
 						elem.data('flipped',true);
 					}
 				});
-
+*/
+				
+				// FLIP
+				$('.flipper').bind('click', function(){
+					$('.card.current').toggleClass('flip');
+				});
+				
 				// CYCLE
 				$('#deck').cycle({
 					after:		onAfter,
