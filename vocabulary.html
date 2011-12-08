@@ -1,8 +1,8 @@
 <!doctype html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="ko"> <!--<![endif]-->
+<!--[if lt IE 7]> <html id="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html id="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html id="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html id="no-js" lang="ko"> <!--<![endif]-->
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -90,6 +90,27 @@
 				-webkit-transform: rotateX(0deg);
 				z-index: 1000;
 			}
+
+			/*	START 
+				For browsers that don't support 3d transforms: */
+			.no-csstransforms3d .flip .side_one, .no-csstransforms3d .side_two p {
+				opacity: 0;
+				   -moz-transition: all .4s ease-in-out;
+					-ms-transition: all .4s ease-in-out;
+					 -o-transition: all .4s ease-in-out;
+				-webkit-transition: all .4s ease-in-out;
+						transition: all .4s ease-in-out;
+			}
+			.no-csstransforms3d .flip .side_two p {
+				opacity: 1;
+				   -moz-transition: all .4s ease-in-out;
+					-ms-transition: all .4s ease-in-out;
+					 -o-transition: all .4s ease-in-out;
+				-webkit-transition: all .4s ease-in-out;
+						transition: all .4s ease-in-out;
+			}
+			/*	END */
+
 			.card p {
 				display: table-cell;
 				height: inherit;
@@ -107,7 +128,7 @@
 				position: relative;
 				width: 500px;
 			}
-			.flipper { /* needs to be a class so that the up and down arrows are on top of each other with position: absolute; */
+			.flipper { /* needs to be a class so that the two arrows can be separate and placed on top of each other with position: absolute; */
 				color: #fff;
 				cursor: pointer;
 				left: 48%;
